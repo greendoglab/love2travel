@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+{% load markup %}
+{% load site_extras %}
+{% load blog_extras %}
+
+{% block body_title %}
+<h2 class="simple-title"><span class="blue-back-title">Новенькое!<span></h2>
+{% endblock %}
+
+{% block lib %}
+<script src="/static/js/endless.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/endless_on_scroll.js" type="text/javascript" charset="utf-8"></script>
+{% endblock %}
+
+{% block content %}
+
+    {% for post in post %}
+    <div class="post index-post">
+        <h2 class="post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+        {% if post.tourpost %}
+        <div class="date date-red">{{ post.start_date|date:"j.m.Y" }} - {{ post.end_date|date:"j.m.Y" }}</div>
+        {% endif %}
+        {% if post.blogpost %}
+        <div class="date">{{ post.date|date:"j.m.Y" }}</div>
+        {% endif %}
+        <article>
+            {{ post.get_description|textile }}
+        </article>
+        <ul class="post-cat-list">
+            {% for cat in post.category.all %}
+            <li>
+                <a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a>{% if not forloop.last %}, {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block rightbar %}
+<aside class="right-bar">
+    {% show_hot_tours %}
+    {% show_banners %}
+</aside>
+{% endblock %}

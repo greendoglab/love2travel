@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+{% load markup %}
+{% load site_extras %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block html_content_tag %}
+<section class="content post-content">
+{% endblock %}
+
+{% block lib %}
+<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/jquery.lightbox-0.5.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/voyage_search.css">
+{% endblock %}
+
+{% block content %}
+	<div class="post index-post">
+		<header class="h-dashed">
+			<h2 class="post-title post-title-in">Спасибо!</h2>
+		</header>
+		<article>
+			<p>
+				{{ thanks }}
+			</p>
+		</article>
+	</div>
+{% endblock %}

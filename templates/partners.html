@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+{% load markup %}
+{% load site_extras %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block html_content_tag %}
+<section class="content post-content">
+{% endblock %}
+
+{% block body_title %}
+<h2 class="simple-title"><span class="blue-back-title">Партнеры.<span></h2>
+{% endblock %}
+
+{% block content %}
+
+    {% for item in partners %}
+    <div class="partner-item">
+        <div class="partner-item-img">
+            {% thumbnail item.image "160" as image %}
+            <img src="{{image.url}}" />
+            {% endthumbnail %}
+        </div>
+
+        <div class="partner-item-desc">
+            <h3>{{ item.name }}</h3>
+            {{ item.body|textile }}
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}

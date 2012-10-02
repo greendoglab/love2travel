@@ -1,0 +1,30 @@
+{% load thumbnail %}
+<ul class="banners">
+    {% for ban in banner1 %}
+    <li>
+        <a href="{{ ban.link }}">
+            {% thumbnail ban.banner "240" as image %}
+            <img src="{{image.url}}" />
+            {% endthumbnail %}
+        </a>
+    </li>
+    {% endfor %}
+    {% for ban in banner2 %}
+    <li>
+        <a href="{{ ban.link }}">
+            {% thumbnail ban.banner "240" as image %}
+            <img src="{{image.url}}" />
+            {% endthumbnail %}
+        </a>
+    </li>
+    {% endfor %}
+    {% for ban in banner3 %}
+    <li>
+        <a href="{{ ban.link }}">
+            {% thumbnail ban.banner "240" as image %}
+            <img src="{{image.url}}" />
+            {% endthumbnail %}
+        </a>
+    </li>
+    {% endfor %}
+</ul>

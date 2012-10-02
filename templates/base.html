@@ -1,0 +1,138 @@
+{% load pages_extras %}
+{% load site_extras %}
+{% load blog_extras %}
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+<title>{% block title %}{% endblock %} - Бутик свадебных путешествий Юлии Фонтаний</title>
+<meta name="google-site-verification" content="g6dyUAn9n9r5HbaC5-lh7R-nqrxttbGdrR7wPSQvEhc" />
+<meta charset="UTF-8" />
+<meta name="author" content="Михаил Якименко" />
+{% block descriptions %}
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+{% endblock %}
+<link rel="stylesheet" type="text/css" media="all" href="/static/css/style.css" />
+<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/jquery.lightbox-0.5.css" media="screen" />
+<script type="text/javascript" src="/static/js/jquery.lightbox-0.5.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/js/slides.jquery.js"></script>
+{% block lib %}
+{% endblock %}
+<!-- Google Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Philosopher:400,700,400italic,700italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+<!-- Google Fonts -->
+{% block js_code %}
+<script type="text/javascript">
+$(function(){
+    $(".menu-pointer").hover(
+        function(){
+            $(this).find('.pages-menu').show();
+        },
+        function(){
+            $(this).find('.pages-menu').hide();
+        }
+    );
+    $('#gallery a').lightBox();
+    $("#slides").slides({
+        pagination: false,
+        generateNextPrev: false,
+        play: 5000,
+        effect: 'fade',
+    });
+})
+</script>
+{% endblock %}
+<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } })(); </script> <![endif]-->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-13043891-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+<div class="site-wrapper">
+<header class="header">
+	<div class="head-logo">
+		<a href="/" class="logo"></a>
+	</div>
+	<div class="head-name-phone">
+		<span class="head-site-name">Бутик Свадебных Путешествий</span>
+		<span class="head-author-name">Юлии Фонтаний</span>
+		<span class="head-site-phone">(044) 361-81-10</span>
+	</div>
+	<nav class="head-top-nav">
+		<ul class="top-nav">
+			{% show_menu_service %}
+			{% show_menu %}
+			<li><a href="/order/">Заказ Путешествия</a></li>
+			<li class="online">
+				{% show_index_chat %}
+			</li>
+		</ul>
+	</nav>
+    <div class="top_show_mask"></div>
+    <div class="top_show">
+        <div id="slides">
+            <div class="slides_container">
+                {% show_shows %}
+            </div>
+        </div>
+    </div>
+</header>
+<aside class="left-bar">
+{% show_left_menu %}
+</aside>
+{% block html_content_tag %}
+<section class="content">
+{% endblock %}
+{% block body_title %}
+{% endblock %}
+{% block content %}
+{% endblock %}
+</section>
+{% block rightbar %}
+{% endblock %}
+<div class="cl"></div>
+<div class="dash"></div>
+<footer class="footer">
+	<div class="foot-about">
+		<div class="blue-marker">Юлия Фонтаний:</div>
+		<span class="foot-about-desc">
+			{% show_index_author %}
+		</span>
+	</div>
+	<div class="foot-map">
+		<div class="foot-map-block foot-map-adv">
+			<div class="blue-marker">Карта сайта:</div>
+		</div>
+		<div class="foot-map-block">
+			<ul class="footer-menu-list">
+				<li><a href="/category/novosti/">Новости</a></li>
+				<li><a href="/category/romanticheskie-puteshestviya/">Романтические путешествия</a></li>
+				<li><a href="/category/turisticheskie-marshruty/">Туристические маршруты</a></li>
+				<li><a href="/category/akcii/">Акции</a></li>
+				<li><a href="/category/otzyvy/">Отзывы</a></li>
+				<li><a href="/category/fotootchet/">Фотоотчет</a></li>
+			</ul>
+		</div>
+		<div class="foot-map-block">
+			<ul class="footer-menu-list">
+				<li><a href="/page/o-nas/">О нас</a></li>
+				<li><a href="/page/kontakty/">Контакты</a></li>
+				<li><a href="/order/">Заказ путешествия</a></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+</div>
+</body>
+</html>

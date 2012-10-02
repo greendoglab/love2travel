@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% load markup %}
+{% load site_extras %}
+
+ {% block title %}{{ post.title }}{% endblock %}
+
+{% block html_content_tag %}
+<section class="content post-content">
+{% endblock %}
+
+{% block body_title %}
+<h2 class="simple-title"><span class="blue-back-title">На связи.<span></h2>
+{% endblock %}
+
+{% block content %}
+
+<div class="order-box">
+
+  <form class="main-form" method="post">
+  {% csrf_token %}
+
+  {{ form.non_field_errors }}
+
+  <div class="form-row form-inp-left form-name">
+    <label class="main-l required" for="">Ваше имя:</label>
+    {{ form.name }}
+    <div class="errors">{{ form.name.errors }}</div>
+  </div>
+
+  <div class="form-row form-tuple">
+    <div class="form-half form-inp-left">
+      <label class="main-l required" for="">Контактный телефон:</label>
+      {{ form.phone }}
+      <div class="errors">{{ form.phone.errors }}</div>
+    </div>
+    <div class="form-half form-inp-left">
+      <label class="main-l required" for="">email:</label>
+      {{ form.email }}
+      <div class="errors">{{ form.email.errors }}</div>
+    </div>
+  </div>
+
+  <div class="form-row form-tuple">
+    <div class="form-half form-inp-left">
+      <label class="main-l" for="">Планируемая дата свадьбы:</label>
+      {{ form.date_married }}
+      <div class="errors">{{ form.date_married.errors }}</div>
+    </div>
+    <div class="form-half form-inp-left">
+      <label class="main-l required" for="">Планируемая дата тура:</label>
+     {{ form.date_tour }}
+     <div class="errors">{{ form.date_tour.errors }}</div>
+    </div>
+  </div>
+
+  <div class="form-row big-lbl radio-ul">
+    <label class="main-l required" for="">Вид путешествия</label>
+      {{ form.type_tour }}
+      <div class="errors">{{ form.type_tour.errors }}</div>
+  </div>
+
+  <div class="form-row form-tuple">
+    <div class="form-half form-inp-left">
+      <label class="main-l required" for="">Страна:</label>
+      {{ form.country }}
+      <div class="errors">{{ form.country.errors }}</div>
+    </div>
+    <div class="form-half form-inp-left">
+      <label class="main-l required" for="">Бюджет поездки:</label>
+      {{ form.budget }}
+      <div class="errors">{{ form.budget.errors }}</div>
+    </div>
+  </div>
+
+  <div class="form-row big-lble radio-ul">
+    <label class="main-l" for="">Класс перелета:</label>
+    {{ form.fly_class }}
+    <div class="errors">{{ form.fly_class.errors }}</div>
+  </div>
+
+  <div class="form-row form-inp-left">
+    <label class="main-l required" for="">Категория отеля(1-5 звезд):</label>
+    {{ form.hotel_stars }}
+    <div class="errors">{{ form.hotel_stars.errors }}</div>
+  </div>
+
+  <div class="form-row big-lbl radio-ul">
+    <label class="main-l" for="">Питание в отеле:</label>
+    {{ form.eat_hotel }}
+    <div class="errors">{{ form.eat_hotel.errors }}</div>
+  </div>
+
+  <div class="form-row form-inp-left form-guest">
+    <label class="main-l" for="">Количество гостей:</label>
+    {{ form.guest }}
+    <div class="errors">{{ form.guest.errors }}</div>
+  </div>
+
+  <div class="form-row big-lbl radio-ul">
+    <label class="main-l" for="">Самостоятельно ли гости оплачивают своё путешествие?
+(перелёт, проживание, питание, визы, страховки):</label>
+   {{ form.guest_pay }}
+   <div class="errors">{{ form.guest_pay.errors }}</div>
+  </div>
+
+  <div class="form-row form-inp-left">
+      <label class="main-l" for="">Лучшее место, по Вашему мнению, для проведения церемонии?</label>
+      {{ form.best_place }}
+      <div class="errors">{{ form.best_place.errors }}</div>
+  </div>
+
+  <div class="form-row form-inp-left">
+      <label class="main-l" for="">В какой стране Вы хотели бы провести Свадьбу (или укажите направление)?</label>
+      {{ form.best_country }}
+      <div class="errors">{{ form.best_country.errors }}</div>
+  </div>
+
+  <div class="form-row form-inp-left">
+      <label class="main-l" for="">Бюджет свадьбы (включая перелёт, проживание, питание, церемонию, доп. услуги, экскурсии)?</label>
+      {{ form.full_budget }}
+      <div class="errors">{{ form.full_budget.errors }}</div>
+  </div>
+
+  <div class="form-row big-lbl radio-ul">
+    <label class="main-l" for="">Интересуют ли Вас дополнительные услуги, которые предлагает наша компания за границей?</label>
+    {{ form.advance }}
+    <div class="errors">{{ form.advance.errors }}</div>
+  </div>
+
+  <div class="form-row feed-textarea">
+    <label class="main-l" for="">Ваши пожелания:</label>
+    {{ form.message }}
+    <div class="errors">{{ form.message.errors }}</div>
+  </div>
+
+  <div class="form-row feed-textarea">
+    <label for="id_cc_myself">Отправить мне копию?</label>
+    {{ form.cc_myself }}
+    <div class="errors">{{ form.cc_myself.errors }}</div>
+  </div>
+
+  <input type="submit" />
+
+	</form>
+
+</div>
+
+{% endblock %}

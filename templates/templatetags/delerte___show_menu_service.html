@@ -1,0 +1,14 @@
+{% if menu %}
+<li class="menu-pointer">
+	Услуги
+	<div class="pages-menu-wrap">
+		<ul class="pages-menu">
+		{% for item in menu %}
+			<li>
+				<a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+</li>
+{% endif %}

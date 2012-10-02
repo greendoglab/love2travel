@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+{% load markup %}
+{% load site_extras %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block js_code %}
+{% endblock %}
+
+{% block html_content_tag %}
+<section class="content post-content">
+{% endblock %}
+
+{% block content %}
+	<div class="post">
+		<header class="h-dashed">
+			<h2 class="post-title post-title-in"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+			<span class="date">{{ post.date|date:"j.m.Y" }}</span>
+			{% if post.start_date %}
+			<div class="date date-red">{{ post.start_date|date:"j.m.Y" }} - {{ post.end_date|date:"j.m.Y" }}</div>
+			{% endif %}
+			<ul class="post-cat-list">
+				{% for cat in post.category.all %}
+				<li>
+					<a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a>{% if not forloop.last %}, {% endif %}
+				</li>
+				{% endfor %}
+			</ul>
+		</header>
+		<article>
+			{{ post.get_body|textile }}
+		</article>
+	</div>
+
+	{% if post.galleryimage_set.all %}
+	<div id="gallery">
+		<h2>Галерея</h2>
+		<ul>
+		{% for photo in post.galleryimage_set.all %}
+		{% thumbnail photo.image "x500" as big %}
+    		{% thumbnail photo.image "132x80" crop="center" as small %}
+        		<li><a href="{{ big.url }}"><img src="{{ small.url }}"></a></li>
+    		{% endthumbnail %}
+		{% endthumbnail %}
+		{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+
+{% endblock %}

@@ -1,0 +1,8 @@
+{% load thumbnail %}
+{% for item in shows %}
+<div class="show_item">
+    {% thumbnail item.image "1000x1000" crop="center" as small %}
+        <img src="{{ small.url }}">
+    {% endthumbnail %}
+</div>
+{% endfor %}

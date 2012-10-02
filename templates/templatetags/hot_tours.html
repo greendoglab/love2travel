@@ -1,0 +1,17 @@
+{% load markup %}
+{% if  hot_tours %}
+<h2 class="simple-title"><span class="blue-back-title">Горящие туры!<span></h2>
+{% for post in hot_tours %}
+<div class="post hot-post">
+	<h2 class="post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+	{% if post.start_date %}
+    <div class="date date-red">{{ post.start_date|date:"j.m.Y" }} - {{ post.end_date|date:"j.m.Y" }}</div>
+    {% else %}
+    <div class="date">{{ post.date|date:"j.m.Y" }}</div>
+    {% endif %}
+	<article>
+		{{ post.get_hot_decription|textile }}
+	</article>
+</div>
+{% endfor %}
+{% endif %}

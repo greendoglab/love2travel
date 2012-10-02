@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+{% load markup %}
+{% load site_extras %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block html_content_tag %}
+<section class="content post-content">
+{% endblock %}
+
+{% block lib %}
+<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/jquery.lightbox-0.5.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/voyage_search.css">
+{% endblock %}
+
+{% block content %}
+	<div class="post">
+		<header class="h-dashed">
+			<h2 class="post-title post-title-in">{{ post.title }}</h2>
+			{% if post.start_date %}
+			<div class="date date-red">{{ post.start_date|date:"j.m.Y" }} - {{ post.end_date|date:"j.m.Y" }}</div>
+			{% endif %}
+			{% if post.parent %}
+			<ul class="page-child-menu">
+				<li>
+					Назад к разделу <a href="{{ post.parent.get_absolute_url }}">{{ post.parent.title }}</a>
+				</li>
+			</ul>
+			{% endif %}
+			{% if post.page_set.all %}
+			<ul class="page-child-menu">
+				<li>Страницы раздела: </li>
+				{% for item in post.page_set.all %}
+				<li>
+					<a href="{{ item.get_absolute_url }}">{{ item.title }}</a>{% if not forloop.last %}, {% endif %}
+				</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		</header>
+		<article>
+			{{ post.get_body|textile }}
+		</article>
+	</div>
+{% endblock %}

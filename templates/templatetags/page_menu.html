@@ -1,0 +1,21 @@
+{% if menu %}
+
+{% for item in menu %}
+<li class="menu-pointer">
+	<a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+
+	{% if item.page_set.all %}
+	<div class="pages-menu-wrap">
+		<ul class="pages-menu">
+			{% for item in item.page_set.all %}
+			<li>
+				<a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+</li>
+{% endfor %}
+
+{% endif %}

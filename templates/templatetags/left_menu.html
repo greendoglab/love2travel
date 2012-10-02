@@ -1,0 +1,50 @@
+{% load thumbnail %}
+
+{% if menu1 %}
+<ul class="left-menu">
+	{% for item in menu1 %}
+	<li>
+		<a href="{{ item.link }}" class="ml-item-link">
+			<span class="ml-block ml-block-icon"><span class="icon-letter">{{ item.icon }}</span></span>
+			<span class="ml-block ml-block-text">
+				{{ item.name }}
+			</span>
+		</a>
+	</li>
+	{% endfor %}
+</ul>
+{% endif %}
+
+<div class="dash"></div>
+
+{% if menu2 %}
+<ul class="left-menu">
+	{% for item in menu2 %}
+	<li>
+		<a href="{{ item.link }}" class="ml-item-link">
+			<span class="ml-block ml-block-icon"><span class="icon-letter">{{ item.icon }}</span></span>
+			<span class="ml-block ml-block-text">
+				{{ item.name }}
+			</span>
+		</a>
+	</li>
+	{% endfor %}
+</ul>
+{% endif %}
+
+<div class="dash"></div>
+
+{% if menu3 %}
+<ul class="left-menu">
+	{% for item in menu3 %}
+	<li>
+		<a href="{{ item.link }}" class="ml-item-link">
+			<span class="ml-block ml-block-icon"><span class="icon-letter">{{ item.icon }}</span></span>
+			<span class="ml-block ml-block-text">
+				{{ item.name }}
+			</span>
+		</a>
+	</li>
+	{% endfor %}
+</ul>
+{% endif %}
